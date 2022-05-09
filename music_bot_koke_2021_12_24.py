@@ -17,7 +17,7 @@ import niconico_dl
 import random
 import os 
 import shutil
-
+import dicord_apikey
 
 
 
@@ -78,7 +78,7 @@ load = False
 message_is = None
 music_files = list()
 music_files_num = 0
-DISCORD_TOKEN = "ODQyNTAzNTgxNzQzMDU0OTIw.YJ2Qmg.JFjN-lmFfPG-urwRXIhC_AopNOQ"
+DISCORD_TOKEN = dicord_apikey.discord_key()
 endtask = False
 
 
