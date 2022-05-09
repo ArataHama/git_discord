@@ -55,7 +55,7 @@ music_url_directory = "music"
 
 #=======================
 #youtbe API setting
-API_KEY = "AIzaSyBsVtYsGwQgKDtLcE1n8gb7Dp2wxtg-j9Q"
+API_KEY = dicord_apikey.youtube_key()
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSON = "v3"
 
