@@ -6,6 +6,7 @@ import discord
 import youtube_dl
 import random
 from discord.ext import commands
+import discord_apikey
 
 # Suppress noise about console usage from errors
 youtube_dl.utils.bug_reports_message = lambda: ''
@@ -34,9 +35,6 @@ music_url_directory = "music"
 
 #=======================
 #youtbe API setting
-API_KEY = "AIzaSyBsVtYsGwQgKDtLcE1n8gb7Dp2wxtg-j9Q"
-YOUTUBE_API_SERVICE_NAME = "youtube"
-YOUTUBE_API_VERSON = "v3"
 
 #youtube = build(
 #    YOUTUBE_API_SERVICE_NAME,
@@ -58,7 +56,6 @@ message_is = None
 music_files = list()
 music_files_num = 0
 observe_flag = False
-DISCORD_TOKEN = "ODQyNTAzNTgxNzQzMDU0OTIw.YJ2Qmg.JFjN-lmFfPG-urwRXIhC_AopNOQ"
 endtask = False
 
 client = discord.Client()
