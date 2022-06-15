@@ -1,4 +1,3 @@
-from unittest import async_case
 from niconico_dl import NicoNicoVideoAsync
 import pafy
 import asyncio
@@ -57,7 +56,7 @@ observe_flag = False
 #フラグおよびデータ管理クラス
 #==========
 class Flag():
-    def __init__(self, message_is, load=False):
+    def __init__(self, message_is):
         self.message_is = message_is
 
         self.id = int
@@ -108,7 +107,7 @@ flags = list()
 #
 #:エラーが起こる場合
 #：R18制限などがかかっている動画は読み込めずエラーがおこる。
-#：（精度が低すぎるが）古すぎる動画を読み込もうとするとエラーが起こる。
+#
 # 回避処理を入れたい...
 #==================================
 
@@ -216,7 +215,8 @@ class observer():#botが音楽を再生しているかどうか調べる
                 message_is = flag.get_message_is()
                 if message_is.guild.id == id: #一致する音声チャンネルの時
                     try:
-                        members = [i.name for i in message_is.author.voice.channel.members] #人がいなくなったら削除しようとしたやつ：読んだ本人が音声チャンネルから抜けたらデータ取れなくなる。　別の方法がいる。
+                        members = [i.name for i in message_is.author.voice.channel.members] #人がいなくなったら削除しようとしたやつ：
+                        #読んだ本人が音声チャンネルから抜けたらデータ取れなくなる。　別の方法がいる。
                         print(len(members))
                     except:
 
@@ -290,7 +290,7 @@ class observer():#botが音楽を再生しているかどうか調べる
                             return
 
 
-                        else:
+                        else: #youtubeのurlの時の処理
 
                             try:
                                 player,thumbnail,filename = await YTDLSource.from_url(Y_url, loop=bot.loop)
@@ -301,7 +301,6 @@ class observer():#botが音楽を再生しているかどうか調べる
                             except Exception:
                                 embed3 = discord.Embed(title="動画を再生できませんでした。",description="", color=0x3cb371)
                                 embed3.add_field(name="原因として",value="年齢制限がかかっている。",inline=False)
-                                embed3.add_field(name="",value="niconico動画を再生しようとした。",inline=False)
                                 embed3.add_field(name="などが考えられます。",value="",inline=False)
                                 await message_is.channel.send(embed=embed3, delete_after=15)
                                 return
