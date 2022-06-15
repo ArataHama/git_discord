@@ -31,8 +31,6 @@ ffmpeg_options = {
 
 }
 
-music_url_directory = "music"
-
 #=======================
 #youtbe API setting
 
@@ -51,14 +49,10 @@ ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 url_list = list()
 
 play_is = False
-load = False
-message_is = None
-music_files = list()
-music_files_num = 0
-observe_flag = False
-endtask = False
 
-client = discord.Client()
+message_is = None
+observe_flag = False
+
 #==========
 #フラグおよびデータ管理クラス
 #==========
@@ -197,7 +191,7 @@ class observer():#botが音楽を再生しているかどうか調べる
                             data = True
                             await self.main(id ,data)#mainを呼ぶ
                         except AttributeError:
-                            await client.close()
+                            await bot.close()
                     else:
                         break
                 else:
@@ -299,7 +293,7 @@ class observer():#botが音楽を再生しているかどうか調べる
                         else:
 
                             try:
-                                player,thumbnail,filename = await YTDLSource.from_url(Y_url, loop=client.loop)
+                                player,thumbnail,filename = await YTDLSource.from_url(Y_url, loop=bot.loop)
                                 source = discord.PCMVolumeTransformer(player, volume=0.1)
                                 print("nandato")
 
